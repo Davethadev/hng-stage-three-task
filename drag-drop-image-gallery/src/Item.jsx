@@ -5,7 +5,7 @@ const Item = forwardRef(({ id, ...props }, ref) => {
     <div className="w-auto md:w-[240px] h-[240px]" {...props} ref={ref}>
       <img
         className="w-full h-full object-cover rounded"
-        src={`./${id}`}
+        src={`${id}`}
         alt=""
       />
     </div>

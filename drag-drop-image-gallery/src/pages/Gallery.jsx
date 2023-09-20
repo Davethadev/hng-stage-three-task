@@ -21,18 +21,18 @@ import Item from "../Item";
 function Gallery() {
   const [activeId, setActiveId] = useState(null);
   const [items, setItems] = useState([
-    "birmingham-museums-trust-wgZgKLeKQh4-unsplash.jpg",
-    "erik-karits-Fx61zgqQbok-unsplash.jpg",
-    "cezar-sampaio-A8jVi5zAOMU-unsplash.jpg",
-    "neom-AGZgrNeq7Kg-unsplash.jpg",
-    "karsten-winegeart-EqMRa0cgEiI-unsplash.jpg",
-    "martin-katler-s96eIS1YzSs-unsplash.jpg",
-    "kellen-riggin-68j_mWLDR10-unsplash.jpg",
-    "karsten-winegeart-MGOpFseNHUU-unsplash.jpg",
-    "marek-piwnicki-nwBIdpYt9UU-unsplash.jpg",
-    "martin-katler-zLKODiBGN6k-unsplash.jpg",
-    "s-tsuchiya--wjUTPYkV2w-unsplash.jpg",
-    "sina-bahar-xf4XM2i7usI-unsplash.jpg",
+    "https://images.unsplash.com/photo-1695026069898-bcb96e060d6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDE5fGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    "https://images.unsplash.com/photo-1694198250632-b2fbc6746e17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDN8Ym84alFLVGFFMFl8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "https://plus.unsplash.com/premium_photo-1672762542894-caaa8d4f0a77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8Ym84alFLVGFFMFl8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "https://images.unsplash.com/photo-1694572620159-e69049aeba00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDd8Ym84alFLVGFFMFl8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "https://images.unsplash.com/photo-1694907290706-3a2eb63b20b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    "https://images.unsplash.com/photo-1694585536001-e9fc0c29570c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI5fGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    "https://images.unsplash.com/photo-1694739460867-89de7f89cfc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEzfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    "https://images.unsplash.com/photo-1694719977532-293c34eed810?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDExfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    "https://images.unsplash.com/photo-1694804097987-92d439c1f10a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDE1fGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    "https://images.unsplash.com/photo-1694721804143-7c611fde4b22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEyfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    "https://images.unsplash.com/photo-1694903663907-7b28edb9a9a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIwfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    "https://images.unsplash.com/photo-1694885677512-40a76bc76ff8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIzfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
   ]);
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -55,7 +55,7 @@ function Gallery() {
           ))}
         </section>
       </SortableContext>
-      <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
+      {/* <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay> */}
     </DndContext>
   );
 
