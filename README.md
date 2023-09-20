@@ -1,1 +1,0 @@
-# hng-stage-three-task
