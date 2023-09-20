@@ -15,8 +15,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
-import { SortableItem } from "../SortableItem";
-import Item from "../Item";
+import { SortableItem } from "../utils/SortableItem";
 
 function Gallery() {
   const [activeId, setActiveId] = useState(null);
