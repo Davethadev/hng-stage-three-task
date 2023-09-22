@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { auth } from "../auth/firebase";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+
 import {
   closestCenter,
   DndContext,
@@ -16,9 +20,12 @@ import {
 } from "@dnd-kit/sortable";
 
 import { SortableItem } from "../utils/SortableItem";
+import spinner from "../assets/spinner1.svg";
 
 function Gallery() {
+  const navigate = useNavigate();
   const [activeId, setActiveId] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
   const [items, setItems] = useState([
     "https://images.unsplash.com/photo-1695026069898-bcb96e060d6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDE5fGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
     "https://images.unsplash.com/photo-1694198250632-b2fbc6746e17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDN8Ym84alFLVGFFMFl8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
@@ -40,6 +47,19 @@ function Gallery() {
     })
   );
 
+  const handleSignOut = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    try {
+      await signOut(auth);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <DndContext
       sensors={sensors}
@@ -48,10 +68,21 @@ function Gallery() {
       onDragEnd={handleDragEnd}
     >
       <SortableContext items={items} strategy={verticalListSortingStrategy}>
-        <section className="grid grid-cols-2 md:grid-cols-4 w-[92.5%] md:w-[75%] my-4 mx-auto gap-[20px]">
-          {items.map((item, index) => (
-            <SortableItem key={index} id={item} />
-          ))}
+        <section className="w-[92.5%] md:w-[75%] mx-auto">
+          <div className="w-full flex justify-end">
+            <button
+              onClick={handleSignOut}
+              disabled={submitting}
+              className="font-dmsans uppercase text-white bg-blue rounded h-[45px] w-[300px] font-[500] mt-4 flex justify-center items-center"
+            >
+              {submitting ? <img src={spinner} alt="" /> : "sign out"}
+            </button>
+          </div>
+          <div className="md:grid md:grid-cols-3 lg:grid-cols-4 my-4 w-full gap-[20px]">
+            {items.map((item, index) => (
+              <SortableItem key={index} id={item} />
+            ))}
+          </div>
         </section>
       </SortableContext>
       {/* <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay> */}
